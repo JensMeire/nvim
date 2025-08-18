@@ -5,6 +5,12 @@ return {
     "hrsh7th/cmp-buffer", -- source for text in buffer
     "hrsh7th/cmp-path", -- source for file system paths
     "onsails/lspkind.nvim", -- vs-code like pictograms
+    {
+      "zbirenbaum/copilot-cmp",
+      config = function()
+        require("copilot_cmp").setup()
+      end,
+    },
   },
   config = function()
     local cmp = require("cmp")
@@ -24,7 +30,8 @@ return {
       }),
       -- sources for autocompletion
       sources = cmp.config.sources({
-	{ name = "nvim_lsp" },
+        { name = "copilot" },
+        { name = "nvim_lsp" },
         { name = "buffer" }, -- text within current buffer
         { name = "path" }, -- file system paths
       }),
