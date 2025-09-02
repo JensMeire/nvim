@@ -6,10 +6,21 @@ return {
     { "nvim-telescope/telescope-fzf-native.nvim", build = "make" },
     "nvim-tree/nvim-web-devicons",
   },
-  config = function()
-    local telescope = require("telescope")
+  keys = {
+    {
+      "<leader>,",
+      "<cmd>Telescope buffers sort_mru=true sort_lastused=true<cr>",
+      desc = "Switch Buffer",
+    },
+    {
+      "<leader>fb",
+      "<cmd>Telescope buffers sort_mru=true sort_lastused=true ignore_current_buffer=true<cr>",
+      desc = "Buffers",
+    },
+  },
+  opts = function()
     local actions = require("telescope.actions")
-    telescope.setup({
+    return {
       defaults = {
         mappings = {
           i = {
@@ -18,6 +29,6 @@ return {
           },
         },
       },
-    })
+    }
   end,
 }

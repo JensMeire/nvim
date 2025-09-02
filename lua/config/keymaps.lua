@@ -13,7 +13,7 @@ map("n", "<leader>fs", "<cmd>Telescope live_grep<cr>", { desc = "Find string" })
 
 map("n", "<S-H>", "<cmd>BufferLineCyclePrev<cr>", { desc = "Previous Buffer" })
 map("n", "<S-L>", "<cmd>BufferLineCycleNext<cr>", { desc = "Next Buffer" })
-map("n", "<S-W>", "<cmd>bdelete<cr>", { desc = "Delete buffer" })
-
+map("n", "<S-W>", "<cmd>BufferLinePickClose<cr>", { desc = "Pick to close" })
+map("n", "<S-G>", "<cmd>BufferLinePick<cr>", { desc = "Pick to go to" })
 map("n", "<leader>sf", ":w<cr>", { desc = "Save File" })
 map("n", "<leader>sa", ":wa<cr>", { desc = "Save All" })
