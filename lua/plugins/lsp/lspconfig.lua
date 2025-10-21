@@ -21,7 +21,7 @@ return {
 
         -- set keybinds
         opts.desc = "Show LSP references"
-        keymap.set("n", "<F8>", vim.lsp.buf.implementationvim.lsp.buf.references, opts) -- show definition, references
+        keymap.set("n", "<F8>", vim.lsp.buf.references, opts) -- show definition, references
 
         opts.desc = "Go to declaration"
         keymap.set("n", "<F9>", vim.lsp.buf.declaration, opts) -- go to declaration
@@ -61,9 +61,6 @@ return {
       end,
     })
 
-    -- used to enable autocompletion (assign to every lsp server config)
-    local capabilities = cmp_nvim_lsp.default_capabilities()
-
     vim.diagnostic.config({
       signs = {
         text = {
@@ -75,14 +72,15 @@ return {
       },
     })
 
-    local lspconfig = require("lspconfig")
+    local capabilities = cmp_nvim_lsp.default_capabilities()
 
-    lspconfig.eslint.setup({
+    vim.lsp.config("eslint", {
       capabilities = capabilities,
       filetypes = { "html", "typescriptreact", "javascriptreact", "css", "sass", "scss", "less", "svelte" },
     })
+    vim.lsp.enable("eslint")
 
-    lspconfig.lua_ls.setup({
+    vim.lsp.config("lua_ls", {
       capabilities = capabilities,
       settings = {
         Lua = {
@@ -91,8 +89,9 @@ return {
         },
       },
     })
+    vim.lsp.enable("lua_ls")
 
-    lspconfig.ruby_lsp.setup({
+    vim.lsp.config("ruby_lsp", {
       capabilities = capabilities,
       init_options = {
         addonSettings = {
@@ -100,9 +99,11 @@ return {
         },
       },
     })
+    vim.lsp.enable("ruby_lsp")
 
-    lspconfig.pyright.setup({
+    vim.lsp.config("pyright", {
       capabilities = capabilities,
     })
+    vim.lsp.enable("pyright")
   end,
 }
