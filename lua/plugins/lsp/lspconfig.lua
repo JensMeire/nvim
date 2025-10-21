@@ -21,7 +21,7 @@ return {
 
         -- set keybinds
         opts.desc = "Show LSP references"
-        keymap.set("n", "<F8>", "<cmd>Telescope lsp_references<CR>", opts) -- show definition, references
+        keymap.set("n", "<F8>", vim.lsp.buf.implementationvim.lsp.buf.references, opts) -- show definition, references
 
         opts.desc = "Go to declaration"
         keymap.set("n", "<F9>", vim.lsp.buf.declaration, opts) -- go to declaration
@@ -30,10 +30,10 @@ return {
         keymap.set("n", "<F11>", vim.lsp.buf.definition, opts) -- show lsp definitions
 
         opts.desc = "Show LSP implementations"
-        keymap.set("n", "<F10>", "<cmd>Telescope lsp_implementations<CR>", opts) -- show lsp implementations
+        keymap.set("n", "<F10>", vim.lsp.buf.implementation, opts) -- show lsp implementations
 
         opts.desc = "Show LSP type definitions"
-        keymap.set("n", "<F12>", "<cmd>Telescope lsp_type_definitions<CR>", opts) -- show lsp type definitions
+        keymap.set("n", "<F12>", vim.lsp.buf.type_definition, opts) -- show lsp type definitions
 
         opts.desc = "See available code actions"
         keymap.set({ "n", "v" }, "<leader>ca", vim.lsp.buf.code_action, opts) -- see available code actions, in visual mode will apply to selection
@@ -75,38 +75,34 @@ return {
       },
     })
 
-    vim.lsp.config("*", {
-      capabilities = capabilities,
-    })
+    local lspconfig = require("lspconfig")
 
-    vim.lsp.config("eslint", {
+    lspconfig.eslint.setup({
+      capabilities = capabilities,
       filetypes = { "html", "typescriptreact", "javascriptreact", "css", "sass", "scss", "less", "svelte" },
     })
 
-    vim.lsp.config("lua_ls", {
+    lspconfig.lua_ls.setup({
+      capabilities = capabilities,
       settings = {
         Lua = {
-          -- make the language server recognize "vim" global
-          diagnostics = {
-            globals = { "vim" },
-          },
-          completion = {
-            callSnippet = "Replace",
-          },
+          diagnostics = { globals = { "vim" } },
+          completion = { callSnippet = "Replace" },
         },
       },
     })
 
-    vim.lsp.config("ruby_lsp", {
+    lspconfig.ruby_lsp.setup({
+      capabilities = capabilities,
       init_options = {
         addonSettings = {
-          ["Ruby LSP Rails"] = {
-            enablePendingMigrationsPrompt = false,
-          },
+          ["Ruby LSP Rails"] = { enablePendingMigrationsPrompt = false },
         },
       },
     })
 
-    vim.lsp.config("pyright", {})
+    lspconfig.pyright.setup({
+      capabilities = capabilities,
+    })
   end,
 }

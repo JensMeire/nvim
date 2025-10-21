@@ -47,7 +47,7 @@ return {
         "black", -- python formatter
         "pylint",
         "eslint_d",
-        "rubocop",
+        "rubocop", -- ruby formatter
       },
     })
   end,
