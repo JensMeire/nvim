@@ -12,3 +12,5 @@ map("n", "<leader>sa", ":wa<cr>", { desc = "Save All" })
 
 map("n", "<leader>fq", "<cmd>Telescope quickfix<CR>", { desc = "Open Quickfix" })
 map("n", "<leader>fr", "<cmd>Telescope resume<CR>", { desc = "Resume last pick" })
+
+map("n", "<leader>gb", "<cmd>BlameToggle<CR>", { desc = "Toggle Git Blame" })
