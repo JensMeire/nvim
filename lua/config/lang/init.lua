@@ -54,4 +54,28 @@ function M.lint_packages()
   return packages
 end
 
+function M.dap_dependencies()
+  local dependencies = {}
+  for _, lang in ipairs(languages) do
+    local lang_config = language_config(lang)
+    local lang_dependencies = lang_config.dap_dependencies()
+    if lang_dependencies then
+      vim.list_extend(dependencies, lang_dependencies)
+    end
+  end
+  return dependencies
+end
+
+function M.setup_dap()
+  local config = {}
+  for _, lang in ipairs(languages) do
+    local lang_config = language_config(lang)
+    local lang_dap_config = lang_config.configure_dap()
+    if lang_dap_config then
+      config = vim.tbl_deep_extend("force", config, lang_dap_config)
+    end
+  end
+  return config
+end
+
 return M

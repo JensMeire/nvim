@@ -40,7 +40,11 @@ function M.lint_packages()
   }
 end
 
-function M.debug_config()
+function M.configure_dap()
+  return nil
+end
+
+function M.dap_dependencies()
   return nil
 end
 

@@ -95,5 +95,12 @@ return {
       end,
       desc = "Toggle Watch (Neotest)",
     },
+    {
+      "<leader>td",
+      function()
+        require("neotest").run.run({ strategy = "dap" })
+      end,
+      desc = "Debug nearest test",
+    },
   },
 }

@@ -31,22 +31,13 @@ function M.lint_packages()
   }
 end
 
-function M.debug_config()
-  local dap = require("dap")
-  dap.adapters.ruby = function(callback, _)
-    callback({
-      type = "server",
-      host = "127.0.0.1",
-      port = "38698",
-    })
-  end
-  dap.configurations.ruby = {
-    {
-      type = "ruby",
-      name = "Debug current file",
-      request = "launch",
-      program = "${file}",
-    },
+function M.configure_dap()
+  require("dap-ruby").setup()
+end
+
+function M.dap_dependencies()
+  return {
+    "suketa/nvim-dap-ruby",
   }
 end
 

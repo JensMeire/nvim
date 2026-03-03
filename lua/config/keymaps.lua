@@ -18,11 +18,14 @@ map("n", "<leader>fr", "<cmd>Telescope resume<CR>", { desc = "Resume last pick" 
 
 map("n", "<leader>gb", "<cmd>BlameToggle<CR>", { desc = "Toggle Git Blame" })
 
-vim.keymap.set("n", "=", [[<cmd>vertical resize +5<cr>]]) -- make the window biger vertically
-vim.keymap.set("n", "-", [[<cmd>vertical resize -5<cr>]]) -- make the window smaller vertically
-vim.keymap.set("n", "+", [[<cmd>horizontal resize +2<cr>]]) -- make the window bigger horizontally by pressing shift and =
-vim.keymap.set("n", "_", [[<cmd>horizontal resize -2<cr>]]) -- make the window smaller horizontally by pressing shift and -
+map("n", "=", [[<cmd>vertical resize +5<cr>]]) -- make the window biger vertically
+map("n", "-", [[<cmd>vertical resize -5<cr>]]) -- make the window smaller vertically
+map("n", "+", [[<cmd>horizontal resize +2<cr>]]) -- make the window bigger horizontally by pressing shift and =
+map("n", "_", [[<cmd>horizontal resize -2<cr>]]) -- make the window smaller horizontally by pressing shift and -
 
+map("n", "<leader>eh", function()
+  require("snacks").notifier.show_history()
+end, { desc = "Show notifications" })
 -- Debugger (nvim-dap/dap-ui) for Ruby and more
 map("n", "<leader>db", function()
   require("dap").toggle_breakpoint()

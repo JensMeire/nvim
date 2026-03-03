@@ -26,6 +26,7 @@ return {
     { "<leader>fm", "<cmd>Telescope marks<cr>", desc = "Marks" },
     { "<leader>fk", "<cmd>Telescope keymaps<cr>", desc = "Keymaps" },
     { "<leader>fo", "<cmd>Telescope vim_options<cr>", desc = "Options" },
+    { "<leader>bd", "<cmd>Telescope diagnostics bufnr=0<cr>", desc = "Buffer Diagnostics" },
     {
       "<leader>f/",
       function()
