@@ -22,3 +22,26 @@ vim.keymap.set("n", "=", [[<cmd>vertical resize +5<cr>]]) -- make the window big
 vim.keymap.set("n", "-", [[<cmd>vertical resize -5<cr>]]) -- make the window smaller vertically
 vim.keymap.set("n", "+", [[<cmd>horizontal resize +2<cr>]]) -- make the window bigger horizontally by pressing shift and =
 vim.keymap.set("n", "_", [[<cmd>horizontal resize -2<cr>]]) -- make the window smaller horizontally by pressing shift and -
+
+-- Debugger (nvim-dap/dap-ui) for Ruby and more
+map("n", "<leader>db", function()
+  require("dap").toggle_breakpoint()
+end, { desc = "Toggle Breakpoint" })
+map("n", "<leader>dc", function()
+  require("dap").continue()
+end, { desc = "Start/Continue Debugging" })
+map("n", "<leader>di", function()
+  require("dap").step_into()
+end, { desc = "Step Into" })
+map("n", "<leader>do", function()
+  require("dap").step_over()
+end, { desc = "Step Over" })
+map("n", "<leader>dO", function()
+  require("dap").step_out()
+end, { desc = "Step Out" })
+map("n", "<leader>dr", function()
+  require("dap").repl.toggle()
+end, { desc = "Toggle REPL" })
+map("n", "<leader>du", function()
+  require("dapui").toggle()
+end, { desc = "Toggle Debugger UI" })

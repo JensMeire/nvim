@@ -26,29 +26,11 @@ return {
 
     mason_lspconfig.setup({
       -- list of servers for mason to install
-      ensure_installed = {
-        "ts_ls",
-        "html",
-        "cssls",
-        "tailwindcss",
-        "lua_ls",
-        "pyright",
-        "eslint",
-        "ruby_lsp",
-        "solargraph",
-      },
+      ensure_installed = require("config.lang").lsp_packages(),
     })
 
     mason_tool_installer.setup({
-      ensure_installed = {
-        "prettier", -- prettier formatter
-        "stylua", -- lua formatter
-        "isort", -- python formatter
-        "black", -- python formatter
-        "pylint",
-        "eslint_d",
-        "rubocop", -- ruby formatter
-      },
+      ensure_installed = require("config.lang").lsp_packages(),
     })
   end,
 }

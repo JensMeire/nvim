@@ -2,7 +2,7 @@ return {
   "nvim-treesitter/nvim-treesitter",
   build = ":TSUpdate",
   event = { "BufReadPre", "BufNewFile" }, -- load early, but not at startup
-  main = "nvim-treesitter.configs",
+  main = "nvim-treesitter.config",
   opts = {
     ensure_installed = {
       "ruby",
