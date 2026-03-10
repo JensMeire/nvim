@@ -2,14 +2,11 @@ return {
   "neovim/nvim-lspconfig",
   event = { "BufReadPre", "BufNewFile" },
   dependencies = {
-    "hrsh7th/cmp-nvim-lsp",
+    "saghen/blink.cmp",
     "folke/which-key.nvim",
     { "antosha417/nvim-lsp-file-operations", config = true },
   },
   config = function()
-    -- import cmp-nvim-lsp plugin
-    local cmp_nvim_lsp = require("cmp_nvim_lsp")
-
     local keymap = vim.keymap -- for conciseness
     vim.api.nvim_create_autocmd("LspAttach", {
       group = vim.api.nvim_create_augroup("UserLspConfig", {}),
@@ -55,7 +52,7 @@ return {
       },
     })
 
-    local capabilities = cmp_nvim_lsp.default_capabilities()
+    local capabilities = require("blink.cmp").get_lsp_capabilities()
 
     require("config.lang").setup_lsp(capabilities)
   end,
