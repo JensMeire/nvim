@@ -24,9 +24,17 @@ return {
       texthl = "DapLogPoint",
     })
 
+    vim.fn.sign_define("DapStopped", {
+      text = "",
+      texthl = "DapStopped",
+      linehl = "DapStoppedLine",
+    })
+
     vim.api.nvim_set_hl(0, "DapBreakpoint", { fg = "#FF0000" })
     vim.api.nvim_set_hl(0, "DapBreakpointCondition", { fg = "#FFA500" })
     vim.api.nvim_set_hl(0, "DapBreakpointRejected", { fg = "#888888" })
     vim.api.nvim_set_hl(0, "DapLogPoint", { fg = "#61AFEF" })
+    vim.api.nvim_set_hl(0, "DapStopped", { fg = "#98C379" })
+    vim.api.nvim_set_hl(0, "DapStoppedLine", { bg = "#2C323C" })
   end,
 }
